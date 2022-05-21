@@ -1,0 +1,46 @@
+---
+syntax: python
+tags: [ competitive ]
+---
+
+# Check if a number is Fibonacci
+from math import sqrt
+
+def is_perfect_square(x):
+    return int(sqrt(x)) ** 2 == x
+
+def is_fibonacci(n):
+return is_perfect_square(5 * n ** 2 + 4) or is_perfect_square(5 * n ** 2 - 4)
+
+# Check if a number is Perfect Square
+def is_perfect_square(x):
+    return int(sqrt(x)) ** 2 == x
+
+# Check if a number is Prime
+def is_prime(n):
+    if n == 2 or n == 3:
+        return True
+
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+
+    i = 5
+    w = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+
+        i += w
+        w = 6 - w
+
+    return True
+
+# Create first n rows of Pascal's triangle by this recursion-ish method
+def triangle(depth, out=[]):
+    for i in range(depth):
+        out = [1 if j == 0 or j == len(out) else out[j-1] + out[j]
+               for j in range(len(out) + 1)]
+        yield out
+
+
