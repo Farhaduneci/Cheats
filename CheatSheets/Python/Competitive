@@ -10,7 +10,7 @@ def is_perfect_square(x):
     return int(sqrt(x)) ** 2 == x
 
 def is_fibonacci(n):
-return is_perfect_square(5 * n ** 2 + 4) or is_perfect_square(5 * n ** 2 - 4)
+    return is_perfect_square(5 * n ** 2 + 4) or is_perfect_square(5 * n ** 2 - 4)
 
 # Check if a number is Perfect Square
 def is_perfect_square(x):
@@ -42,5 +42,9 @@ def triangle(depth, out=[]):
         out = [1 if j == 0 or j == len(out) else out[j-1] + out[j]
                for j in range(len(out) + 1)]
         yield out
+
+# Check if a year is leap year
+def isLeapYear(year):
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
