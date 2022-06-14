@@ -1,0 +1,29 @@
+---
+syntax: python
+tags: [competitive, implementation]
+---
+
+from collections import defaultdict
+
+COMMANDS = defaultdict(dict)
+
+# This can run commands like:
+# COMMAND TYPE  ARG(S)
+# change  size  10
+
+
+class CommandDispatcher:
+    def __init__(self, drawer):
+        self.__drawer = drawer
+
+    def command(func):
+        command, command_type = func.__name__.split('_')
+        COMMANDS[command][command_type] = func
+        return func
+
+    def dispatch(self, command):
+        command, command_type, *parameters = command.split()
+        self._handle_command(command, command_type, *parameters)
+
+    def _handle_command(self, command, command_type, *parameters):
+        COMMANDS[command][command_type](self, *parameters)
